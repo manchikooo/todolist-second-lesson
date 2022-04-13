@@ -1,11 +1,10 @@
 import axios, { AxiosResponse } from 'axios'
-import {FilterValuesType} from "../features/TodolistsList/todolists-reducer";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
     withCredentials: true,
     headers: {
-        'API-KEY': '4d5c4af9-f092-43aa-bbe7-8041e34ceb9c'
+        'API-KEY': '8f2534e2-22a4-4052-894e-a66c04807482'
     }
 })
 
