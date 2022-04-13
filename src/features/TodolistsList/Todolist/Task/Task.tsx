@@ -1,11 +1,10 @@
-import React, {ChangeEvent, useCallback} from 'react'
-import {EditableSpan} from './EditableSpan'
-import {Delete} from '@mui/icons-material';
+import React, { ChangeEvent, useCallback } from 'react'
+import { EditableSpan } from '../../../../components/EditableSpan/EditableSpan'
+import { TaskStatuses, TaskType } from '../../../../api/todolists-api'
+
+import { Delete } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import Checkbox from '@mui/material/Checkbox';
-import {TaskStatuses, TaskType} from './api/todolists-api'
-import {useDispatch} from "react-redux";
-import {removeTaskTC} from "./state/tasks-reducer";
 
 type TaskPropsType = {
     task: TaskType
@@ -15,10 +14,7 @@ type TaskPropsType = {
     removeTask: (taskId: string, todolistId: string) => void
 }
 export const Task = React.memo((props: TaskPropsType) => {
-
-    const dispatch = useDispatch()
-
-    const onClickHandler = () => dispatch(removeTaskTC(props.task.id, props.todolistId))
+    const onClickHandler = useCallback(() => props.removeTask(props.task.id, props.todolistId), [props.task.id, props.todolistId]);
 
     const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         let newIsDoneValue = e.currentTarget.checked
